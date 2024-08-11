@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Arena Access</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+      body {
+        background-color: #fcf9f2; /* Cream background color */
+      }
+      .carousel-item {
+        height: 32rem;
+        background-color: #777;
+        color: white;
+        position: relative;
+        background-position: center;
+        background-size: cover;
+      }
+      .container {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding-bottom: 50px;
+      }
+      .btn.btn-primary-modal {
+        position: absolute;
+        top: 15px; /* Adjust based on your navbar height */
+        right: 10px;
+        margin: 0;
+        background-color: #777;
+        border: #777;
+      }
+      .logo-small {
+        height: 40px;
+        width: auto;
+      }
+      .footer-container {
+        background-color: #777;
+        color: white;
+        padding: 2em 0;
+        text-align-last: center;
+      }
+      .navbar-nav .nav-link i, 
+      .dropdown-toggle i, 
+      .footer .list-inline-item i {
+        color: #777; /* Set icon color to #777 */
+      }
+      .carousel-item .btn-primary {
+        background-color: #777;
+        border-color: #777;
+      }
+      .carousel-item .btn-primary:hover,
+      .carousel-item .btn-primary:focus,
+      .carousel-item .btn-primary:active {
+        background-color: #555;
+        border-color: #555;
+      }
+
+      /* Dark Mode Styles */
+      .dark-mode {
+        background-color: #121212; /* Dark background color */
+        color: #e0e0e0; /* Light text color */
+      }
+      .dark-mode .carousel-item {
+        background-color: #333;
+      }
+      .dark-mode .btn.btn-primary-modal {
+        background-color: #333;
+        border: #333;
+      }
+      .dark-mode .footer-container {
+        background-color: #333;
+        color: #e0e0e0;
+      }
+      .dark-mode .navbar-nav .nav-link {
+        color: #ffffff; /* Set nav link text color to white */
+      }
+      .dark-mode .navbar-nav .nav-link i {
+        color: #ffffff; /* Set nav link icon color to white */
+      }
+      .dark-mode .carousel-item .btn-primary {
+        background-color: #333;
+        border-color: #333;
+      }
+      .dark-mode .footer .list-inline-item i {
+        color: #ffffff; /* Set footer icon color to white */
+      }
+     
+      .dark-mode .carousel-item .btn-primary:hover,
+      .dark-mode .carousel-item .btn-primary:focus,
+      .dark-mode .carousel-item .btn-primary:active {
+        background-color: #555;
+        border-color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <section id="nav-bar">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <a class="navbar-brand" href="index.html"><img src="arena_acess.svg" alt="Logo" class="logo-small"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html"><i class="fas fa-hippo"></i> HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="meet_us.html"><i class="fa-solid fa-earth-americas"></i> Meet Us</a>
+              </li>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Login <i class="fas fa-caret-down"></i>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Admin</a></li>
+                  <li><a class="dropdown-item" href="#">User</a></li>
+                </ul>
+              </div>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary btn-primary-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa-solid fa-user"></i> Sign Up
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Sign Up</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="signupForm">
+                        <div class="mb-3">
+                          <label for="name" class="form-label">Name</label>
+                          <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="email" class="form-label">Email address</label>
+                          <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="password" class="form-label">Password</label>
+                          <input type="password" class="form-control" id="password" required>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary" form="signupForm">Sign Up</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ul>
+          </div>
+        </nav>
+      </section>
+    </header>
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" style="background-image: url(carousel1.jpg);">
+          <div class="container">
+            <h1>Arena Access</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, sint aut labore aspernatur tempore perferendis cupiditate quibusdam nobis. Voluptatibus tenetur optio culpa, quia natus id aperiam veritatis laudantium! Quae, iusto.</p>
+            <a href="#" class="btn btn-lg btn-primary">Sign up today</a>
+          </div>
+        </div>
+        <div class="carousel-item" style="background-image: url(carousel2.jpg);">
+          <div class="container">
+            <h1>Example header</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, sint aut labore aspernatur tempore perferendis cupiditate quibusdam nobis. Voluptatibus tenetur optio culpa, quia natus id aperiam veritatis laudantium! Quae, iusto.</p>
+            <a href="#" class="btn btn-lg btn-primary">Sign up today</a>
+          </div>
+        </div>
+        <div class="carousel-item" style="background-image: url(carousel3.jpg);">
+          <div class="container">
+            <h1>Example header</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, sint aut labore aspernatur tempore perferendis cupiditate quibusdam nobis. Voluptatibus tenetur optio culpa, quia natus id aperiam veritatis laudantium! Quae, iusto.</p>
+            <a href="#" class="btn btn-lg btn-primary">Sign up today</a>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    
+    <footer class="bg-light footer">
+      <div class="container">
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item"><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+          <li class="list-inline-item"><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+          <li class="list-inline-item"><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+        </ul>
+        <p class="text-muted small mb-4 mb-lg-0 text-center"><b>© Arena Access 2024. All Rights Reserved.</b></p>
+      </div>
+    </footer>
+
+    <!-- Dark Mode Toggle Button -->
+    <button id="darkModeToggle" class="btn btn-secondary" style="position: fixed; bottom: 20px; right: 20px;">
+        <i class="fa-solid fa-moon">Dark Mode Theme</i></button>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+      document.getElementById('darkModeToggle').addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+      });
+    </script>
+  </body>
+</html>
