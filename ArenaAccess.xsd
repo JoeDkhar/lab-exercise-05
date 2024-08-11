@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.arenaaccess.com"
+           xmlns="http://www.arenaaccess.com"
+           elementFormDefault="qualified">
+
+    <xs:element name="ArenaAccess">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="SportsComplex" type="SportsComplexType"/>
+                <xs:element name="Facilities" type="FacilitiesType"/>
+                <xs:element name="Equipment" type="EquipmentType"/>
+                <xs:element name="Bookings" type="BookingsType"/>
+                <xs:element name="Customers" type="CustomersType"/>
+                <xs:element name="Prices" type="PricesType"/>
+                <xs:element name="Schedule" type="ScheduleType"/>
+                <xs:element name="Payments" type="PaymentsType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="SportsComplexType">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="Address" type="xs:string"/>
+            <xs:element name="Phone" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="FacilitiesType">
+        <xs:sequence>
+            <xs:element name="Facility" type="FacilityType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="FacilityType">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="Type" type="xs:string"/>
+            <xs:element name="Capacity" type="xs:positiveInteger"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="EquipmentType">
+        <xs:sequence>
+            <xs:element name="Item" type="EquipmentItemType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="EquipmentItemType">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="AvailableQuantity" type="xs:nonNegativeInteger"/>
+            <xs:element name="RentalPrice" type="xs:decimal"/>
+            <xs:element name="Currency" type="CurrencyType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="BookingsType">
+        <xs:sequence>
+            <xs:element name="Booking" type="BookingType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="BookingType">
+        <xs:sequence>
+            <xs:element name="BookingID" type="xs:string"/>
+            <xs:element name="CustomerID" type="xs:string"/>
+            <xs:element name="FacilityName" type="xs:string"/>
+            <xs:element name="Date" type="xs:date"/>
+            <xs:element name="StartTime" type="xs:time"/>
+            <xs:element name="EndTime" type="xs:time"/>
+            <xs:element name="EquipmentRented" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Item" type="xs:string" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="CustomersType">
+        <xs:sequence>
+            <xs:element name="Customer" type="CustomerType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="CustomerType">
+        <xs:sequence>
+            <xs:element name="CustomerID" type="xs:string"/>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="Email" type="xs:string"/>
+            <xs:element name="MembershipLevel" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PricesType">
+        <xs:sequence>
+            <xs:element name="Price" type="PriceType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PriceType">
+        <xs:sequence>
+            <xs:element name="FacilityName" type="xs:string"/>
+            <xs:element name="HourlyRate" type="xs:decimal"/>
+            <xs:element name="Currency" type="CurrencyType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ScheduleType">
+        <xs:sequence>
+            <xs:element name="Event" type="EventType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="EventType">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="FacilityName" type="xs:string"/>
+            <xs:element name="Date" type="xs:date"/>
+            <xs:element name="StartTime" type="xs:time"/>
+            <xs:element name="EndTime" type="xs:time"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PaymentsType">
+        <xs:sequence>
+            <xs:element name="Payment" type="PaymentType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PaymentType">
+        <xs:sequence>
+            <xs:element name="PaymentID" type="xs:string"/>
+            <xs:element name="BookingID" type="xs:string"/>
+            <xs:element name="Amount" type="xs:decimal"/>
+            <xs:element name="Currency" type="CurrencyType"/>
+            <xs:element name="PaymentMethod" type="xs:string"/>
+            <xs:element name="PaymentStatus" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="CurrencyType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="USD"/>
+            <xs:enumeration value="EUR"/>
+            <xs:enumeration value="GBP"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

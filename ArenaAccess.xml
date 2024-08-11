@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ArenaAccess xmlns="http://www.arenaaccess.com">
+    <SportsComplex>
+        <Name>Arena Access Sports Complex</Name>
+        <Address>123 Main St, Anytown, India</Address>
+        <Phone>123-456-7890</Phone>
+    </SportsComplex>
+    <Facilities>
+        <Facility>
+            <Name>Swimming Pool</Name>
+            <Type>Pool</Type>
+            <Capacity>50</Capacity>
+        </Facility>
+        <Facility>
+            <Name>Basketball Court</Name>
+            <Type>Court</Type>
+            <Capacity>30</Capacity>
+        </Facility>
+    </Facilities>
+    <Equipment>
+        <Item>
+            <Name>Basketball</Name>
+            <AvailableQuantity>20</AvailableQuantity>
+            <RentalPrice>2.00</RentalPrice>
+            <Currency>USD</Currency>
+        </Item>
+        <Item>
+            <Name>Swimming Goggles</Name>
+            <AvailableQuantity>15</AvailableQuantity>
+            <RentalPrice>1.50</RentalPrice>
+            <Currency>USD</Currency>
+        </Item>
+    </Equipment>
+    <Bookings>
+        <Booking>
+            <BookingID>B001</BookingID>
+            <CustomerID>C001</CustomerID>
+            <FacilityName>Swimming Pool</FacilityName>
+            <Date>2023-10-01</Date>
+            <StartTime>08:00:00</StartTime>
+            <EndTime>10:00:00</EndTime>
+            <EquipmentRented>
+                <Item>Swimming Goggles</Item>
+            </EquipmentRented>
+        </Booking>
+        <Booking>
+            <BookingID>B002</BookingID>
+            <CustomerID>C002</CustomerID>
+            <FacilityName>Basketball Court</FacilityName>
+            <Date>2023-10-02</Date>
+            <StartTime>14:00:00</StartTime>
+            <EndTime>16:00:00</EndTime>
+            <EquipmentRented>
+                <Item>Basketball</Item>
+            </EquipmentRented>
+        </Booking>
+    </Bookings>
+    <Customers>
+        <Customer>
+            <CustomerID>C001</CustomerID>
+            <Name>John Doe</Name>
+            <Email>john.doe@example.com</Email>
+            <MembershipLevel>Gold</MembershipLevel>
+        </Customer>
+        <Customer>
+            <CustomerID>C002</CustomerID>
+            <Name>Jane Smith</Name>
+            <Email>jane.smith@example.com</Email>
+            <MembershipLevel>Silver</MembershipLevel>
+        </Customer>
+    </Customers>
+    <Prices>
+        <Price>
+            <FacilityName>Swimming Pool</FacilityName>
+            <HourlyRate>10.00</HourlyRate>
+            <Currency>USD</Currency>
+        </Price>
+        <Price>
+            <FacilityName>Basketball Court</FacilityName>
+            <HourlyRate>15.00</HourlyRate>
+            <Currency>USD</Currency>
+        </Price>
+    </Prices>
+    <Schedule>
+        <Event>
+            <Name>Morning Swim</Name>
+            <FacilityName>Swimming Pool</FacilityName>
+            <Date>2023-10-01</Date>
+            <StartTime>08:00:00</StartTime>
+            <EndTime>10:00:00</EndTime>
+        </Event>
+        <Event>
+            <Name>Afternoon Basketball</Name>
+            <FacilityName>Basketball Court</FacilityName>
+            <Date>2023-10-02</Date>
+            <StartTime>14:00:00</StartTime>
+            <EndTime>16:00:00</EndTime>
+        </Event>
+    </Schedule>
+    <Payments>
+        <Payment>
+            <PaymentID>P001</PaymentID>
+            <BookingID>B001</BookingID>
+            <Amount>20.00</Amount>
+            <Currency>USD</Currency>
+            <PaymentMethod>Credit Card</PaymentMethod>
+            <PaymentStatus>Completed</PaymentStatus>
+        </Payment>
+        <Payment>
+            <PaymentID>P002</PaymentID>
+            <BookingID>B002</BookingID>
+            <Amount>30.00</Amount>
+            <Currency>USD</Currency>
+            <PaymentMethod>PayPal</PaymentMethod>
+            <PaymentStatus>Pending</PaymentStatus>
+        </Payment>
+    </Payments>
+</ArenaAccess>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arena Access Data</title>
+    <style>
+        
+    </style>
+    <script src="xmllint.js"></script> 
+</head>
+<body>
+    <h1>Arena Access Data</h1>
+    <div id="output"></div>
+    
+
+    <script>
+        function loadXMLDoc(filename) {
+            return new Promise(function(resolve, reject) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        resolve(this.responseText);
+                    } else if (this.readyState == 4) {
+                        reject(new Error('Error loading document: ' + filename));
+                    }
+                };
+                xhttp.open("GET", filename, true);
+                xhttp.send();
+            });
+        }
+
+        function transformXML(xml, xslt) {
+            if (window.XSLTProcessor) {
+                var xsltProcessor = new XSLTProcessor();
+                xsltProcessor.importStylesheet(xslt);
+                var resultDocument = xsltProcessor.transformToFragment(xml, document);
+                document.getElementById("output").appendChild(resultDocument);
+            } else {
+                alert("XSLTProcessor not supported in this browser.");
+            }
+        }
+
+        function validateXML(xmlStr, xsdStr) {
+            var result = xmllint.validateXML({ xml: xmlStr, schema: xsdStr });
+            if (result.errors) {
+                console.log("XML is invalid.", result.errors);
+                alert("XML is invalid: " + result.errors.join("\n"));
+            } else {
+                console.log("XML is valid.");
+                alert("XML is valid.");
+            }
+        }
+
+        async function processXML() {
+            try {
+                var xmlStr = await loadXMLDoc("ArenaAccess_invalid.xml");
+                console.log("Loaded XML:", xmlStr);
+                var xsdStr = await loadXMLDoc("ArenaAccess.xsd");
+                console.log("Loaded XSD:", xsdStr);
+                var xslStr = await loadXMLDoc("transform.xsl");
+                console.log("Loaded XSLT:", xslStr);
+
+                validateXML(xmlStr, xsdStr);
+
+                var parser = new DOMParser();
+                var xml = parser.parseFromString(xmlStr, "application/xml");
+                var xsl = parser.parseFromString(xslStr, "application/xml");
+
+                transformXML(xml, xsl);
+            } catch (error) {
+                console.error("Error processing XML:", error.message);
+            }
+        }
+
+        window.onload = function() {
+            processXML();
+        };
+    </script>
+    
+</body>
+</html>
+
